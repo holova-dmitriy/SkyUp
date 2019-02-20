@@ -1,5 +1,6 @@
 <?php
 
+use App\House;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,6 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        if (! House::count()) {
+            $this->call(HousesTableSeeder::class);
+        }
     }
 }
