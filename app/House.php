@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class House extends Model
 {
@@ -19,4 +20,14 @@ class House extends Model
         'storeys',
         'garages',
     ];
+
+    public function scopePriceFrom(Builder $query, $price)
+    {
+        $query->where('price', '>=', $price);
+    }
+
+    public function scopePriceTo(Builder $query, $price)
+    {
+        $query->where('price', '<=', $price);
+    }
 }
