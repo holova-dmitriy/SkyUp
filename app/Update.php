@@ -15,6 +15,7 @@ class Update
             ->artisan('route:cache')
             ->artisan('config:cache')
             ->artisan('migrate', ['--force' => true])
+            ->artisan('db:seed')
             ->artisan('cache:clear')
             ->artisan('queue:restart'); // ->artisan('horizon:terminate');
     }
@@ -26,6 +27,7 @@ class Update
             ->external('npm', 'install')
             ->external('npm', 'run', 'development')
             ->artisan('migrate')
+            ->artisan('db:seed')
             ->artisan('cache:clear')
             ->artisan('queue:restart'); // ->artisan('horizon:terminate');
     }
